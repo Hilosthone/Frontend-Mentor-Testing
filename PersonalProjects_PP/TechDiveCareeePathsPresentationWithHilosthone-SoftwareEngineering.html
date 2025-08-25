@@ -1,0 +1,139 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Choose Software Engineering - TechDive</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #7b2cbf, #9d4edd);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slide {
+      max-width: 700px;
+      text-align: center;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      animation: fadeSlide 1s ease;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .nav-buttons {
+      margin-top: 1.5rem;
+    }
+    button {
+      padding: 0.7rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #c77dff;
+      color: white;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #e0aaff;
+    }
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide" id="slide">
+    <h1>🎤 Welcome to TechDive Computer Institute</h1>
+    <p>👋 Hello everyone! I'm <strong>Hilosthone</strong>, your tutor in <strong>Software Engineering</strong>. Let me show you why it’s an amazing path to follow.</p>
+    <div class="nav-buttons">
+      <button onclick="prevSlide()">⬅️ Back</button>
+      <button onclick="nextSlide()">Next ➡️</button>
+    </div>
+  </div>  <script>
+    const slides = [
+      {
+        title: "🎤 Welcome to TechDive Computer Institute",
+        content:
+          "👋 Hello everyone! I'm <strong>Hilosthone</strong>, your tutor in <strong>Software Engineering</strong>. Let me show you why it’s an amazing path to follow."
+      },
+      {
+        title: "💭 So Many Exciting Paths in Tech",
+        content:
+          "🎨 Graphic Design • 🔐 Cyber Security • 📊 Data Analysis • 🧠 Data Science • 💻 Software Engineering<br><br>👉 All paths are great — but let’s explore why Software Engineering stands out."
+      },
+      {
+        title: "👨🏽‍💻 What Is Software Engineering?",
+        content:
+          "We don’t just use technology — we create it. <br><br>🌐 Websites, 📱 Apps, 🎮 Games, 🏢 Business Systems — all powered by code."
+      },
+      {
+        title: "💡 Why Choose Software Engineering?",
+        content:
+          "✅ Endless Roles 🌍<br>✅ Global Jobs 🌐<br>✅ High Pay 💰<br>✅ Creative + Logical 🎨🧠<br>✅ Start Small, Grow Fast 🚀"
+      },
+      {
+        title: "📍 What I’ll Be Teaching You",
+        content:
+          "🌐 Web Development<br>📱 App Development<br>🎮 Game Development<br><br>Choose one or become a Full-Stack Dev! 💪"
+      },
+      {
+        title: "❤️ Why I’m Passionate About This",
+        content:
+          "I’ve seen students grow from zero to building amazing things.<br><br>I don’t just teach code — I teach how to think like a builder and a problem solver. 👨🏽‍💻"
+      },
+      {
+        title: "🎯 Final Words & Invitation",
+        content:
+          "If you want to create websites, apps, and games — join Software Engineering.<br><br>Let’s not just use tech, let’s build it. 💻✨"
+      }
+    ];
+
+    let current = 0;
+    const slideDiv = document.getElementById("slide");
+
+    function renderSlide() {
+      slideDiv.querySelector("h1").innerHTML = slides[current].title;
+      slideDiv.querySelector("p").innerHTML = slides[current].content;
+    }
+
+    function nextSlide() {
+      if (current < slides.length - 1) {
+        current++;
+        renderSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (current > 0) {
+        current--;
+        renderSlide();
+      }
+    }
+  </script></body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to TechDive Computer Institute</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fefefe;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 1rem;
+      overflow: hidden;
+    }
+    .slideshow {
+      width: 90%;
+      max-width: 900px;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .slide {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+      transform: translateY(20px);
+    }
+    .slide.active {
+      opacity: 1;
+      position: relative;
+      transform: translateY(0);
+    }
+    .slide h2 {
+      color: #0066cc;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .slide p, .slide ul {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    .slide ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .slide ul li {
+      margin-bottom: 0.5rem;
+    }
+    .controls {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .controls button {
+      padding: 0.6rem 1.2rem;
+      margin: 0 0.6rem;
+      border: none;
+      background: #0066cc;
+      color: white;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .controls button:hover {
+      background: #004a99;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="slideshow">
+    <!-- Add your slides here -->
+    <div class="slide active">
+      <h2>🎓 Welcome to TechDive Computer Institute</h2>
+      <p>TechDive is a leading institute in Nigeria offering a range of top-notch tech courses. We offer:</p>
+      <ul>
+        <li>💡 6-month intensive training</li>
+        <li>🧭 1-month general intro</li>
+        <li>🎯 5-month specialities: Cyber Security, Software Engineering, Graphics Design, Robotics, etc.</li>
+      </ul>
+    </div><div class="slide">
+  <h2>🧑‍🏫 Meet Your Instructor: Hilosthone</h2>
+  <p>Hello, I'm Hilosthone — your Teacher, Supervisor, and Mentor for the Software Engineering Course 💻</p>
+  <ul>
+    <li>🎓 Computer Science Student at the Prestigious University of Ilorin</li>
+    <li>💼 Full-Stack Developer</li>
+    <li>🎨 Graphic Designer</li>
+    <li>🤖 AI Generative Creator</li>
+    <li>✍️ Poet</li>
+    <li>🌟 Experienced Software Engineer & Educator</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>📚 Course Structure</h2>
+  <p>The Software Engineering course includes:</p>
+  <ul>
+    <li>🌐 Web Development: HTML, CSS, JS, TailwindCSS</li>
+    <li>📱 App Development: Native ReactJS</li>
+    <li>🎮 Game Development: Unity</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>🧪 Interactive Learning</h2>
+  <ul>
+    <li>📆 Weekly Quizzes to track progress</li>
+    <li>🤖 Weekly AI Tools to boost productivity</li>
+    <li>👤 One-on-One sessions for guidance and mentorship</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>🚀 Project-Based Learning</h2>
+  <ul>
+    <li>👨‍💻 TechDiveAlone: Individual milestone projects</li>
+    <li>👥 TechDiveAlong: Group collaborative projects</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>🌟 What You'll Gain</h2>
+  <ul>
+    <li>🚧 Build real-world web, mobile & game apps</li>
+    <li>📜 Certificate of Completion</li>
+    <li>🔧 Portfolio-ready projects</li>
+    <li>💬 Lifetime mentorship opportunities</li>
+    <li>🌍 A tech community for continuous growth</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>👑 Meet Our CEO</h2>
+  <p>The CEO of TechDive is Mr. Sodiq (popularly known as Sid) 📞</p>
+  <ul>
+    <li>📧 Email: TechDivecomputerinstitute@gmail.com</li>
+    <li>📱 Phone: +2349058263561</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h2>🎉 Final Words</h2>
+  <p>We're excited to have you join our family. Together, let's build the future! 🚀</p>
+</div>
+
+  </div>  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+      });
+      slides[index].classList.add("active");
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Auto Play
+    setInterval(nextSlide, 10000);
+    showSlide(currentSlide);
+  </script></body>
+</html>

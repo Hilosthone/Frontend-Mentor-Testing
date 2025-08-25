@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💫 Advanced Unit Converter</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e6f2ff;
+      color: #222;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #005a9c;
+    }
+    select, input, button {
+      padding: 0.6rem;
+      margin: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .result {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💡 All-in-One Unit Converter</h1>
+
+  <label>Enter Value: </label>
+  <input type="number" id="inputValue" placeholder="e.g. 100"><br>
+
+  <label>Convert From: </label>
+  <select id="fromUnit">
+    <option value="cm">Centimeters (cm)</option>
+    <option value="mm">Millimeters (mm)</option>
+    <option value="celsius">Celsius (°C)</option>
+    <option value="fahrenheit">Fahrenheit (°F)</option>
+    <option value="g">Grams (g)</option>
+    <option value="kg">Kilograms (kg)</option>
+  </select><br>
+
+  <label>Convert To: </label>
+  <select id="toUnit">
+    <option value="m">Meters (m)</option>
+    <option value="celsius">Celsius (°C)</option>
+    <option value="fahrenheit">Fahrenheit (°F)</option>
+    <option value="kg">Kilograms (kg)</option>
+    <option value="N">Newtons (N)</option>
+  </select><br>
+
+  <button onclick="convertUnit()">🔄 Convert</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function convertUnit() {
+      const value = parseFloat(document.getElementById("inputValue").value);
+      const from = document.getElementById("fromUnit").value;
+      const to = document.getElementById("toUnit").value;
+      let result;
+
+      if (isNaN(value)) {
+        result = "⚠️ Please enter a valid number!";
+      } else if (from === "cm" && to === "m") {
+        result = `${value / 100} meters`;
+      } else if (from === "mm" && to === "m") {
+        result = `${value / 1000} meters`;
+      } else if (from === "celsius" && to === "fahrenheit") {
+        result = `${(value * 9/5) + 32} °F`;
+      } else if (from === "fahrenheit" && to === "celsius") {
+        result = `${(value - 32) * 5/9} °C`;
+      } else if (from === "g" && to === "kg") {
+        result = `${value / 1000} kg`;
+      } else if (from === "kg" && to === "N") {
+        result = `${value * 9.81} N`;
+      } else {
+        result = "❌ Invalid conversion pair!";
+      }
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+
+</body>
+</html>

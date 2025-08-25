@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechDive Computer Institute</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn ease-in-out 1.5s forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hover-effect:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-white">
+  <nav class="bg-black p-4 flex justify-center space-x-6 text-lg">
+    <a href="#home" class="hover:text-yellow-300">Home</a>
+    <a href="#about" class="hover:text-yellow-300">About</a>
+    <a href="#tutors" class="hover:text-yellow-300">Tutors</a>
+    <a href="#courses" class="hover:text-yellow-300">Courses</a>
+    <a href="#gallery" class="hover:text-yellow-300">Gallery</a>
+    <a href="#testimonials" class="hover:text-yellow-300">Testimonials</a>
+    <a href="#enroll" class="hover:text-yellow-300">Enroll</a>
+  </nav>  <!-- Homepage Intro -->  <section id="home" class="min-h-screen bg-black text-center flex items-center justify-center flex-col p-10">
+    <h1 class="text-5xl font-bold text-yellow-300 fade-in">Welcome to TechDive 💻</h1>
+    <p class="mt-4 text-lg text-gray-300 fade-in" style="animation-delay: 0.5s; animation-fill-mode: forwards;">Empowering the Next Generation of Tech Leaders</p>
+    <a href="#enroll" class="mt-8 inline-block bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 fade-in" style="animation-delay: 1s; animation-fill-mode: forwards;">Join Us Today</a>
+  </section>  <!-- About Section -->  <section id="about" class="min-h-screen bg-gradient-to-r from-purple-800 to-indigo-900 text-white p-8">
+    <h1 class="text-4xl font-bold text-center mb-6">🌟 About TechDive Computer Institute</h1>
+    <div class="max-w-3xl mx-auto text-lg space-y-6">
+      <p>TechDive is your gateway to digital excellence. From coding and design to data science and cybersecurity, our institute equips you with the skills to shine in today's tech-driven world.</p>
+      <p>Our 6-month training program includes 1 month of general introduction and 5 months of specialization, covering Software Engineering, Cyber Security, Data Science, Robotics, and Graphic Design.</p>
+      <p>We support both online and physical classes, and students can use either a smartphone or a laptop to learn.</p>
+    </div>
+  </section>  <!-- Tutors Section -->  <section id="tutors" class="min-h-screen bg-slate-800 text-white p-10">
+    <h1 class="text-4xl font-bold text-center mb-10">👨‍🏫 Meet Our Tutors</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div class="bg-white text-black rounded-xl p-6 text-center shadow-lg hover-effect">
+        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
+        <h2 class="text-xl font-bold">Hilosthone</h2>
+        <p class="text-sm text-gray-600">Software Engineering</p>
+      </div>
+      <div class="bg-white text-black rounded-xl p-6 text-center shadow-lg hover-effect">
+        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
+        <h2 class="text-xl font-bold">Rarestar Daniel</h2>
+        <p class="text-sm text-gray-600">Graphics Design</p>
+      </div>
+      <div class="bg-white text-black rounded-xl p-6 text-center shadow-lg hover-effect">
+        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
+        <h2 class="text-xl font-bold">S.T.A Taofeek</h2>
+        <p class="text-sm text-gray-600">Cyber Security</p>
+      </div>
+      <div class="bg-white text-black rounded-xl p-6 text-center shadow-lg hover-effect">
+        <div class="w-24 h-24 bg-gray-300 rounded-full mx-auto mb-4"></div>
+        <h2 class="text-xl font-bold">Mr. Sid</h2>
+        <p class="text-sm text-gray-600">Data Science</p>
+      </div>
+    </div>
+  </section>  <!-- Courses Section -->  <section id="courses" class="min-h-screen bg-blue-950 text-white p-6">
+    <h1 class="text-4xl font-bold text-center mb-10">📘 Our Courses</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">Web Development</div>
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">UI/UX Design</div>
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">Cyber Security</div>
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">Graphics & Video Editing</div>
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">Data Analysis</div>
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">Game Development</div>
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">Mobile App Development</div>
+      <div class="bg-white text-black p-6 text-center font-semibold hover:shadow-2xl">Certificates & Scholarships</div>
+    </div>
+  </section>  <!-- Gallery Section -->  <section id="gallery" class="bg-slate-700 text-white p-10">
+    <h1 class="text-4xl font-bold text-center mb-10">🖼️ Our Gallery</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+      <div class="bg-white rounded-md h-48 shadow-lg"></div>
+      <div class="bg-white rounded-md h-48 shadow-lg"></div>
+      <div class="bg-white rounded-md h-48 shadow-lg"></div>
+      <div class="bg-white rounded-md h-48 shadow-lg"></div>
+      <div class="bg-white rounded-md h-48 shadow-lg"></div>
+      <div class="bg-white rounded-md h-48 shadow-lg"></div>
+    </div>
+  </section>  <!-- Testimonials Section -->  <section id="testimonials" class="bg-indigo-900 text-white p-10">
+    <h1 class="text-4xl font-bold text-center mb-8">💬 What Our Students Say</h1>
+    <div class="max-w-4xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white text-black rounded-xl p-6 shadow-md">
+        <p>"Joining TechDive was the best decision of my life! The tutors are amazing and I’ve learned so much."</p>
+        <p class="mt-2 font-bold">— Adebola, Software Engineer</p>
+      </div>
+      <div class="bg-white text-black rounded-xl p-6 shadow-md">
+        <p>"Thanks to TechDive, I now work remotely as a UI designer. The training was so practical and fun!"</p>
+        <p class="mt-2 font-bold">— Jessica, UI Designer</p>
+      </div>
+    </div>
+  </section>  <!-- Enroll Section -->  <section id="enroll" class="min-h-screen bg-yellow-100 text-black p-8">
+    <h1 class="text-4xl font-bold text-center mb-6">📝 Enroll at TechDive</h1>
+    <div class="max-w-xl mx-auto space-y-6 text-lg">
+      <p>Ready to dive into tech? Fill out our enrollment form and start your transformation today. Classes are flexible and taught by expert tutors!</p>
+      <button class="w-full bg-blue-900 text-white py-3 rounded-full text-lg hover:bg-blue-700">Fill Enrollment Form</button>
+      <div class="bg-white text-black shadow-lg mt-6 p-6 text-center">
+        <h3 class="font-bold text-xl mb-2">Contact Info</h3>
+        <p>Email: TechDiveComputerInstitute@gmail.com</p>
+        <p>Phone: +234 905 826 3561</p>
+      </div>
+    </div>
+  </section>  <!-- Footer Section -->  <footer class="bg-black text-white p-6 text-center">
+    <p>&copy; 2025 TechDive Computer Institute. All rights reserved.</p>
+    <p class="text-sm text-gray-400">Designed by Hilosthone</p>
+  </footer>
+</body>
+</html>

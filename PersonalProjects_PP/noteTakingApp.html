@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hilosthone's Power Note App 💖</title>
+  <style>
+    :root {
+      --bg-color: #fff5fa;
+      --text-color: #333;
+      --note-bg: #ffe4ec;
+      --btn-color: #d81b60;
+      --hover-color: #ad1457;
+    }
+
+    body.dark {
+      --bg-color: #1e1e2f;
+      --text-color: #f2f2f2;
+      --note-bg: #2a2a40;
+      --btn-color: #bb86fc;
+      --hover-color: #9f6bff;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--btn-color);
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid var(--btn-color);
+      border-radius: 10px;
+      resize: none;
+      background-color: var(--note-bg);
+      color: var(--text-color);
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+      background-color: var(--btn-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--hover-color);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background-color: var(--note-bg);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .note-actions {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+
+    .note-actions button {
+      background-color: transparent;
+      color: var(--btn-color);
+      font-weight: bold;
+      border: none;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      font-style: italic;
+      font-weight: bold;
+      color: var(--btn-color);
+    }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📝 Hilosthone's Super Note App 💖</h1>
+
+  <textarea id="noteInput" placeholder="Write your sweet note here..."></textarea><br/>
+
+  <button onclick="addNote()">Add Note</button>
+  <button onclick="clearNotes()">Clear All</button>
+  <button onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+  <button onclick="exportNotes()">⬇️ Export Notes</button>
+  <input type="file" id="fileInput" onchange="importNotes()" />
+
+  <ul id="noteList"></ul>
+
+  <div class="footer">🌟 Made with 💻❤️ by <span style="color:#b4004e;">Hilosthone</span>😎✨</div>
+
+  <script>
+    let notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+    function displayNotes() {
+      const noteList = document.getElementById('noteList');
+      noteList.innerHTML = '';
+      notes.forEach((note, index) => {
+        noteList.innerHTML += `
+          <li>
+            <span id="note-${index}">${note}</span>
+            <div class="note-actions">
+              <button onclick="editNote(${index})">✏️</button>
+              <button onclick="deleteNote(${index})">❌</button>
+            </div>
+          </li>
+        `;
+      });
+    }
+
+    function addNote() {
+      const noteInput = document.getElementById('noteInput');
+      const note = noteInput.value.trim();
+      if (note) {
+        notes.push(note);
+        localStorage.setItem('notes', JSON.stringify(notes));
+        noteInput.value = '';
+        displayNotes();
+      } else {
+        alert("Please write something, sweetie 💌");
+      }
+    }
+
+    function deleteNote(index) {
+      if (confirm("Delete this note? 😢")) {
+        notes.splice(index, 1);
+        localStorage.setItem('notes', JSON.stringify(notes));
+        displayNotes();
+      }
+    }
+
+    function editNote(index) {
+      const newText = prompt("Edit your note 💭", notes[index]);
+      if (newText !== null) {
+        notes[index] = newText.trim();
+        localStorage.setItem('notes', JSON.stringify(notes));
+        displayNotes();
+      }
+    }
+
+    function clearNotes() {
+      if (confirm("Clear ALL notes? 💔")) {
+        notes = [];
+        localStorage.removeItem('notes');
+        displayNotes();
+      }
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    function exportNotes() {
+      const blob = new Blob([JSON.stringify(notes)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'hilosthone-notes.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importNotes() {
+      const file = document.getElementById('fileInput').files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          try {
+            notes = JSON.parse(e.target.result);
+            localStorage.setItem('notes', JSON.stringify(notes));
+            displayNotes();
+          } catch {
+            alert("Invalid file format 😥");
+          }
+        };
+        reader.readAsText(file);
+      }
+    }
+
+    displayNotes();
+  </script>
+
+</body>
+</html>

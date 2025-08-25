@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TechDive Computer Institute</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a {
+      color: #0066ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    header {
+      background: #0d47a1;
+      color: #fff;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li {
+      font-weight: 600;
+    }
+
+    nav ul li a {
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Main content */
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: #0d47a1;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid #0d47a1;
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
+    /* About section */
+    #about p {
+      font-size: 1.1rem;
+      max-width: 700px;
+    }
+
+    /* Courses */
+    #courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 1.8rem;
+    }
+
+    .course-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .course-card h3 {
+      margin-bottom: 0.7rem;
+      color: #004ba0;
+    }
+
+    .course-card p {
+      font-size: 0.95rem;
+      color: #555;
+      min-height: 60px;
+    }
+
+    /* Tutors section */
+    #tutors {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 2rem;
+    }
+
+    .tutor-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tutor-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+    }
+
+    .tutor-avatar {
+      width: 100px;
+      height: 100px;
+      background: #0d47a1;
+      color: #fff;
+      font-size: 3rem;
+      font-weight: 700;
+      border-radius: 50%;
+      line-height: 100px;
+      margin: 0 auto 1rem auto;
+      user-select: none;
+      animation: pulse 3s infinite ease-in-out;
+      box-shadow: 0 0 15px #0d47a1aa;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 15px #0d47a1aa;
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 25px #0d47a1ff;
+        transform: scale(1.05);
+      }
+    }
+
+    .tutor-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0d47a1;
+      margin-bottom: 0.3rem;
+    }
+
+    .tutor-role {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #555;
+      font-style: italic;
+    }
+
+    /* Contact */
+    #contact form {
+      max-width: 500px;
+      background: #fff;
+      padding: 1.8rem;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    }
+
+    #contact label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      color: #0d47a1;
+    }
+
+    #contact input,
+    #contact textarea {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      margin-bottom: 1.2rem;
+      border: 1.5px solid #0d47a1;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      resize: vertical;
+    }
+
+    #contact input:focus,
+    #contact textarea:focus {
+      outline: none;
+      border-color: #ffcc00;
+      background-color: #fffbea;
+    }
+
+    #contact button {
+      background: #0d47a1;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #contact button:hover {
+      background: #ffcc00;
+      color: #0d47a1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0d47a1;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Nav */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TechDive Computer Institute</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#tutors">Tutors</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        TechDive Computer Institute is a premier technology training center dedicated to empowering the next generation of software developers, data scientists, and tech innovators.
+        Our expert instructors provide hands-on, industry-relevant courses in web development, app development, game development, cybersecurity, and data science.
+      </p>
+    </section>
+
+    <section id="courses">
+      <h2>Our Courses</h2>
+      <div class="course-card">
+        <h3>Web Development</h3>
+        <p>Learn HTML, CSS, JavaScript, React, and modern front-end and back-end technologies.</p>
+      </div>
+      <div class="course-card">
+        <h3>App Development</h3>
+        <p>Build native and cross-platform mobile apps with React Native and other frameworks.</p>
+      </div>
+      <div class="course-card">
+        <h3>Game Development</h3>
+        <p>Create exciting games using Unity and C# with real-world projects.</p>
+      </div>
+      <div class="course-card">
+        <h3>Cybersecurity</h3>
+        <p>Protect systems and networks with our comprehensive cybersecurity training.</p>
+      </div>
+      <div class="course-card">
+        <h3>Data Science</h3>
+        <p>Analyze and visualize data, and learn machine learning techniques.</p>
+      </div>
+    </section>
+
+    <section id="tutors">
+      <h2>Meet Our Tutors</h2>
+      <div class="tutor-card" tabindex="0" aria-label="Tutor: You, Software">
+        <div class="tutor-avatar" aria-hidden="true">🖥️</div>
+        <div class="tutor-name">Hilosthone</div>
+        <div class="tutor-role">Software</div>
+      </div>
+      <div class="tutor-card" tabindex="0" aria-label="Tutor: Rarestar Daniel, Graphics Design">
+        <div class="tutor-avatar" aria-hidden="true">🎨</div>
+        <div class="tutor-name">Rarestar Daniel</div>
+        <div class="tutor-role">Graphics Design</div>
+      </div>
+      <div class="tutor-card" tabindex="0" aria-label="Tutor: S.T.A Taofeek">
+        <div class="tutor-avatar" aria-hidden="true">👨‍🏫</div>
+        <div class="tutor-name">S.T.A Taofeek</div>
+        <div class="tutor-role">Tutor</div>
+      </div>
+      <div class="tutor-card" tabindex="0" aria-label="Tutor: Mr Sid, Data Science">
+        <div class="tutor-avatar" aria-hidden="true">📊</div>
+        <div class="tutor-name">Mr Sid</div>
+        <div class="tutor-role">Data Science</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Your email address" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Your message"></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="formResponse" style="margin-top: 1rem; font-weight: 600;"></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 TechDive Computer Institute | Contact: TechDivecomputerinstitute@gmail.com | Phone: +2349058263561
+  </footer>
+
+  <script>
+    // JavaScript to handle the contact form submission
+    const form = document.getElementById('contactForm');
+    const response = document.getElementById('formResponse');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if(name && email && message) {
+        // Here you would typically send data to a server
+        response.style.color = 'green';
+        response.textContent = `Thank you, ${name}! Your message has been sent. We'll get back to you soon.`;
+
+        // Reset form
+        form.reset();
+      } else {
+        response.style.color = 'red';
+        response.textContent = 'Please fill in all fields.';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Number System Converter</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #f0f9ff, #c1d7ff);
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004080;
+    }
+
+    .converter-box {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      margin: 30px auto;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input, select {
+      padding: 10px;
+      width: 100%;
+      font-size: 1rem;
+      margin-top: 5px;
+      border: 2px solid #b0d4ff;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #004080;
+      color: white;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #0066cc;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #006400;
+      text-align: center;
+    }
+
+    .watermark {
+      text-align: center;
+      font-style: italic;
+      margin-top: 40px;
+      color: #cccccc;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌟 Number System Converter 🌟</h1>
+
+  <div class="converter-box">
+    <label for="number">Enter a Number:</label>
+    <input type="text" id="number" placeholder="E.g., 13 or 1011 or A3" />
+
+    <label for="conversion">Select Conversion Type:</label>
+    <select id="conversion">
+      <option value="decToBin">Decimal → Binary</option>
+      <option value="binToDec">Binary → Decimal</option>
+      <option value="binToHex">Binary → Hexadecimal</option>
+      <option value="hexToBin">Hexadecimal → Binary</option>
+    </select>
+
+    <button onclick="convert()">🔁 Convert</button>
+
+    <div class="result" id="result">✨ Result will appear here ✨</div>
+  </div>
+
+  <div class="watermark">— Hilosthone ✍️</div>
+
+  <script>
+    function convert() {
+      const input = document.getElementById('number').value.trim();
+      const type = document.getElementById('conversion').value;
+      let result = '';
+
+      switch (type) {
+        case 'decToBin':
+          result = parseInt(input, 10).toString(2);
+          break;
+        case 'binToDec':
+          result = parseInt(input, 2).toString(10);
+          break;
+        case 'binToHex':
+          result = parseInt(input, 2).toString(16).toUpperCase();
+          break;
+        case 'hexToBin':
+          result = parseInt(input, 16).toString(2).padStart(4, '0');
+          break;
+        default:
+          result = 'Invalid conversion type.';
+      }
+
+      document.getElementById('result').innerHTML = `✅ Result: <span style="color:#004080;">${result}</span>`;
+    }
+  </script>
+
+</body>
+</html>
